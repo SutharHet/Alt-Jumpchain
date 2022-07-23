@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Generic Virgin Jump</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="eaa15e32-32bc-4002-98f5-ae8e0a4f4bc5" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📁</span></div><h1 class="page-title"><strong><strong>Generic Virgin Jump</strong></strong></h1></header><div class="page-body"><hr id="3b6668c0-6464-453f-8f9f-912809c1350d"/><h2 id="ca22dfdf-587d-4b37-9ed0-afa8bb09297c" class=""><details open=""><summary>Jump Doc</summary></details></h2><div class="indented"><figure id="56962b82-dc93-457c-bf0a-c3c3456631e2"><div class="source"><a href="https://docs.google.com/document/d/1qgCmrKjQyNpWuLgSc2hv6-OMBBLzIs5fIsJrGgDAk24/edit?usp=sharing">https://docs.google.com/document/d/1qgCmrKjQyNpWuLgSc2hv6-OMBBLzIs5fIsJrGgDAk24/edit?usp=sharing</a></div></figure></div><h2 id="87a98306-b0e8-4ab6-8df0-92a75ffc24b1" class=""><strong>Starting CP: 1000</strong></h2><h2 id="a602d144-a302-408b-95d3-074bc5e50f20" class=""><details open=""><summary><strong><strong>IDENTITY</strong></strong></summary></details></h2><div class="indented"><ul id="22864be3-03d1-4547-bca1-a139739646e2" class="bulleted-list"><li style="list-style-type:disc">Choose your personal details for yourself, as appropriate to your Origin and background.</li></ul><ul id="58e07aa1-43b6-4f3c-9ddf-12edad60d08f" class="bulleted-list"><li style="list-style-type:disc">This includes information such as age, gender, biological sex, ethnicity, etc.<ul id="c13713b4-5fa5-4c04-8063-d490b18c8382" class="bulleted-list"><li style="list-style-type:circle"><strong>Gender: Male</strong></li></ul><ul id="db0895c4-787b-4381-9681-bc95b2f37785" class="bulleted-list"><li style="list-style-type:circle"><strong>Age: 24</strong></li></ul></li></ul><ul id="9b25c50b-21f5-4018-aa79-592a8c79461b" class="bulleted-list"><li style="list-style-type:disc">These details can change in each Level, if you so choose, but your Identity choice does not.</li></ul><ul id="f5f21615-f11a-4425-88e5-84e56499c5b8" class="bulleted-list"><li style="list-style-type:disc"><em>Choose only one.</em></li></ul><ul id="e5ae0ec8-0880-4661-8683-6804855c5c84" class="bulleted-list"><li style="list-style-type:disc"><strong>Hybrid Experience - </strong>A mixing of the best features of Drop-In and Immersion. Your new identity is exactly like your old identity except in this new setting, with the only change to your memories being just enough to account for the differences between your home reality and the details of the level and your origin.</li></ul></div><h2 id="9e1bb543-fe69-49e2-97a1-5f3317750b3e" class=""><details open=""><summary><strong><strong>LOCATION</strong></strong></summary></details></h2><div class="indented"><ul id="2febf7f3-8ad9-4a8b-8495-31b5c4a982f9" class="bulleted-list"><li style="list-style-type:disc"><em>Choose anywhere appropriate to the Level, your Origin, and your current background.</em></li></ul></div><h2 id="61185353-d121-4e18-8895-abbbd22685b4" class=""><details open=""><summary><strong><strong>ORIGIN</strong></strong></summary></details></h2><div class="indented"><ul id="8c929e36-e89e-47c0-8520-86e1bc74102c" class="bulleted-list"><li style="list-style-type:disc"><em>So, what kind of cherry Jumper are you, recruit?</em></li></ul><ul id="f2c48b70-d611-48a2-a4ec-df1b4855ee44" class="bulleted-list"><li style="list-style-type:disc"><em>Choose only one.</em></li></ul><ul id="39d06ca3-1c99-4923-ac42-c4f8f27c5abf" class="bulleted-list"><li style="list-style-type:disc"><strong>Incel - </strong>You know everything you want to know about sex, and you are going to get what you want. Finally.</li></ul></div><h2 id="9b812b38-5021-4410-9cfd-5582ed72ddd3" class=""><details open=""><summary><strong><strong>LEVELS</strong></strong></summary></details></h2><div class="indented"><ul id="b1762726-414a-48b3-ad4b-25fcbe755612" class="bulleted-list"><li style="list-style-type:disc"><em>These are the ten different Levels you will visit in the course of this Jump. If you choose, you can go to a specific setting that matches the theme or genre of a Level rather than a generic version. If that specific setting has a Jump, you do not use that Jump document, and nothing done in this Jump will carry over to the actual Jump for that setting.</em></li></ul><ul id="c8ce3eca-49d5-4ab1-96ae-f5d55c318c93" class="bulleted-list"><li style="list-style-type:disc"><em>You can do these Levels in any order you choose. A specific setting may fit more than one Level and can be used for more than one, but it only counts for one of them at a time. In each Level, your Identity determines how deep your immersion in that Level is.</em><ol type="1" id="efa172f2-ffcb-49e8-8c06-a13f3aac7b1d" class="numbered-list" start="1"><li><strong>Erotic Horror</strong></li></ol><ol type="1" id="664dec10-dcf0-47f9-9712-ce9d5898f147" class="numbered-list" start="2"><li><strong>Magical Girls</strong></li></ol><ol type="1" id="4e3c6782-e4c2-4315-b7b4-a62d02ff475c" class="numbered-list" start="3"><li><strong>Pot Boilers / Period Romance</strong></li></ol><ol type="1" id="3eace875-0b8f-4927-a786-7a3b87c91d16" class="numbered-list" start="4"><li><strong>Mind Control / Netorare</strong></li></ol><ol type="1" id="ddf67449-d2da-4c97-ad9e-160471182ab1" class="numbered-list" start="5"><li><strong>Gender Wars / Mecha Musume</strong></li></ol><ol type="1" id="45062000-13b3-48af-9c7a-ade48ebd37f1" class="numbered-list" start="6"><li><strong>Monster Girls</strong></li></ol><ol type="1" id="3232c93a-cb2e-47df-bd13-58cc254e7598" class="numbered-list" start="7"><li><strong>Erotic Fantasy</strong></li></ol><ol type="1" id="8cdd872a-3f90-4e3e-b8bd-ee032d406e6a" class="numbered-list" start="8"><li><strong>Slice of Life / Letters to Penthouse</strong></li></ol><ol type="1" id="532231ad-ab4f-4759-b081-fb73852a70cc" class="numbered-list" start="9"><li><strong>Education / Edutainment</strong></li></ol><ol type="1" id="c849f69f-6ff3-400c-943a-9383c11498b8" class="numbered-list" start="10"><li><strong>Erotic Science Fiction</strong></li></ol></li></ul></div><h2 id="8db519e8-1132-4496-947d-5fc87ff2a9bb" class=""><details open=""><summary><strong><strong>PERKS</strong></strong></summary></details></h2><div class="indented"><ul id="acbc605d-b509-4f5a-be6b-86d11c7724f3" class="bulleted-list"><li style="list-style-type:disc"><em>Perks are discounted for the appropriate Origin.</em></li></ul><ul id="27a3c628-277a-4f2d-9a11-03f976cf6fe5" class="bulleted-list"><li style="list-style-type:disc"><em>Discounted 50cp &amp; 100cp Perks are free instead.</em></li></ul><h3 id="fff980b7-d6bd-4a78-a3d1-1d35ec830ae2" class=""><details open=""><summary><strong>General</strong></summary></details></h3><div class="indented"><ul id="dc42e783-2980-4a50-b16f-ead96df3a120" class="bulleted-list"><li style="list-style-type:disc"><strong>Basic Requirements [Free for All, </strong><span style="border-bottom:0.05em solid"><strong>Cannot Be Kept</strong></span><strong>] </strong>You will receive whatever special abilities, traits, backgrounds, and skills that are required for basic participation in the Level you are in. For example, in Erotic Fantasy, your background might be a sex-fueled witch, so this would provide the skills required to function as such.<p id="e1be1f94-2420-416c-8678-475226b6f5b6" class=""><span style="border-bottom:0.05em solid">These abilities go away when you leave that Level and this perk goes away when you finish this Jump. Nothing can be done to retain these abilities, but you do benefit from any practice, training, study, or actual use in the Level itself of any mundane skills.</span></p></li></ul><ul id="3d92e9f9-a509-4ddd-bf0c-166ef4176e1d" class="bulleted-list"><li style="list-style-type:disc"><strong>Humpchain [Mandatory while here, Optional and </strong><span style="border-bottom:0.05em solid"><strong>Free to Keep</strong></span><strong>] </strong>You know how in porn almost everything is an excuse for sex? Well, that is everywhere for you now. It won’t be all the time, it won’t even be half the time, but if a day goes by without at least three sexually charged scenarios popping up, it will be a very weird day. Expect to walk in on people having sex or just being nude at the right moment, to be invited to parties that turn out to be orgies, or just have an inordinate amount of prostitutes on every street corner.<p id="7060e920-4fc1-4c7f-a8ac-485149e5d5ac" class="">In general, sex and sexually adjacent activities are less likely to cause lasting harm than they realistically should.</p><p id="1a154b86-f705-42db-9bde-85bfadadaa0e" class="">If kept, you can turn this off in future Jumps.</p></li></ul><ul id="257b1f4b-8383-4faa-b851-f3cd9929d6b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Just Dirty Enough [Mandatory while here, Optional and </strong><span style="border-bottom:0.05em solid"><strong>Free to Keep</strong></span><strong>] </strong>So, there’s no getting around the fact that sex involves bodies that might or might not have ideal levels of personal hygiene… or might take place in conditions less clean than your average operating theatre. Well now, strangely, the world will change just enough to keep the level of grime associated with anything sexual to under your own personal squick threshold.<p id="84bc11e4-4ddf-4d2f-89f2-e5d00b072fd6" class="">Any element of the pre-sex ‘scene’ that violates this is fixed the moment it becomes sexual.</p><p id="25b1d696-a8a0-4611-acee-da67f15b2231" class="">If kept, you can turn this off in future jumps.</p></li></ul><ul id="7750c61a-bd63-494d-85f4-e5f389594492" class="bulleted-list"><li style="list-style-type:disc"><strong>Body of a QQ Jumper [50] </strong>You are cured of any sexually transmitted diseases you might be suffering from, as well as any disorder that would affect your ability to perform sexually. You will always know your STD status and partners will believe you when truthfully informed of it. You are reasonably physically fit and you can alter your sexual characteristics to fit your desires at the time of purchase. Your orifices are just a little stretchier but no less tight, if you want that.</li></ul><ul id="613e2c3d-a2f5-46a1-b6c4-c66a8dbc56dd" class="bulleted-list"><li style="list-style-type:disc"><strong>Mind of a QQ Jumper [50] </strong>You are cured of any mental disorders related to sex and any sexual hang-ups you might suffer from. You gain the ability to change your sexual orientation at will. The effect to cure mental disorders will trigger at the end of every Level, and every subsequent Jump.</li></ul><ul id="f400c7ee-d03b-4d31-9fc0-5bbfc2f73400" class="bulleted-list"><li style="list-style-type:disc"><strong>Fertility Control [50] </strong>You can turn your fertility on and off, requiring five minutes of focus to do so. If your fertility is off, any sexual partners will believe you when informed, but they will instantly know if you turn it back on. You can also stop or resume any menstrual cycle without any negative side-effects. You can choose to permanently grant the abilities of this perk to any sexual partner you have.</li></ul><ul id="fac6b874-a162-49b3-acbc-400e2e767d75" class="bulleted-list"><li style="list-style-type:disc"><strong>Libido Control [100] </strong>Baring outside manipulation, you can dial your libido to any value between completely unresponsive to raring to go. The process takes about 20 seconds to go from one extreme to the other. Mundane manipulation will not work, only empowered / supernatural will, and this will offer some resistance to it as long as you consciously will it to.</li></ul><ul id="f7b044fc-1e72-44eb-a1e7-1b35bdb06dc2" class="bulleted-list"><li style="list-style-type:disc"><strong>Celebrity Poker [300] </strong>Hey, we all have fantasy lovers! People we may never meet that we dream about. What would be the point of multi-dimensional sexual tourism if you never got the chance to fulfill those fantasies?<p id="d0c194fc-5f7c-4788-b72f-c84fe1a5ad0f" class="">Circumstances will conspire to give you opportunities to interact with or seduce these fantasy figures, whether they are real world celebrities or named characters of a setting. And, while they are not forced to be with you, they will at least consider the idea. Sexual orientation will not be a barrier to this, as they will find their preferences include you, no matter what. They will decide based solely on their interactions with you.</p><p id="e3b49d49-7b71-4758-a171-d91f8a5299a3" class="">This can be used even if your interest in that person is non-sexual.</p></li></ul><ul id="e2b25300-fa43-4550-ae1f-88db7d672b60" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: 1000 - 550 = 450</strong></li></ul></div><h3 id="3a8ef5b7-cdc2-4b28-b478-db6dbedee049" class=""><details open=""><summary><strong>Neet</strong></summary></details></h3><div class="indented"><ul id="018bc693-03c9-430f-a8cf-886bd1c8ca49" class="bulleted-list"><li style="list-style-type:disc"><strong>Nice Guys Finish Last [200] </strong>You are exceptionally skilled at making certain your partners enjoy themselves, and can hold off your own release until they do. The more patient and enthusiastic you are in guaranteeing your partner feels good at the end of a session, the more pleasurable your own release will be. You even know how to make unwilling partners reach climax, should that be your thing.</li></ul><ul id="fcdbc2e2-b871-4899-ae10-79e3b0ac64dc" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: 450 - 200 = 250</strong></li></ul></div><h3 id="34cccb75-4977-4710-b361-d9622dba0d69" class=""><details open=""><summary><strong>Incel</strong></summary></details></h3><div class="indented"><ul id="3932d49c-d9cd-4e07-b5c5-d93f5ccc3d80" class="bulleted-list"><li style="list-style-type:disc"><strong>Stamina [50, </strong><span style="border-bottom:0.05em solid"><strong>Free</strong></span><strong>] </strong>While your current virgin state might indicate that you’d have all the staying power of an asthmatic running a marathon, you’re actually quite the sexual determinator. Not only can you go at least the full ten rounds, but your refractory periods are quite short, requiring less than a minute to be ready to go again after the first time. Your sexual stamina is enough that, as a man, you could easily orgasm ten times in an hour and still not have to take a nap. As a female, you could probably triple that.</li></ul><ul id="68be7184-9047-4141-8d49-db4dacd6bdf8" class="bulleted-list"><li style="list-style-type:disc"><strong>Nice Guys Finish First [100, </strong><span style="border-bottom:0.05em solid"><strong>Free</strong></span><strong>] </strong>Whenever you do something nice for someone, or treat someone with respect, they’ll be much more likely to willingly have sex with you. This does not apply if your <em>only</em> motivation for this treatment is to get them to have sex with you, but does apply if getting them to have sex with you is not your sole motivation. As long as you can legit say it wasn’t your only motivation, you’re golden.</li></ul><ul id="b6e39238-80af-4ec4-b2ee-6735ea1306ed" class="bulleted-list"><li style="list-style-type:disc"><strong>Predatory Practices [200, </strong><span style="border-bottom:0.05em solid"><strong>100</strong></span><strong>] </strong>You know, instinctively, what buttons to push to get someone into bed with you. Most of the time, they won’t appreciate this, but hey, you’ll get laid and that’s what counts. This is not mind control, but if there is any way to manipulate or influence someone into sleeping with you, you know how.</li></ul><ul id="e1fb9c97-9e6a-4816-9d8f-af3bc3d4de1a" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: 250 - 100 = 150</strong></li></ul></div><h3 id="3c1d34d2-be70-477e-9e4a-ac7372a59f64" class=""><details open=""><summary>Aro/Ace</summary></details></h3><div class="indented"><ul id="eb903753-c431-4351-ba9d-9fef9870cceb" class="bulleted-list"><li style="list-style-type:disc"><strong>Style [50] </strong>You might not be interested in sex, but that doesn’t mean you don’t care about looking sexy. When you want to, you can practically radiate sexual appeal. You have an easy and practical sense of what to wear and how to hold yourself to be as attractive as you can be, and can customize your look to match or contrast with others to either fit in or make yourself noticed.<p id="8c7fda89-756b-4bfd-b4ad-c2c2cc3d16a9" class="">Additionally, any sexual technique you bother to learn, you’ll find new and creative ways to make it your own without sacrificing much (if any) practicality in the name of improved results.</p></li></ul><ul id="dc2fc3f7-82c9-4455-9c55-7392045aedd3" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: 150 - 50 = 100</strong></li></ul></div><h3 id="4ca6ce35-b426-44be-8b66-c73288359cfa" class=""><details open=""><summary><strong>Education / Edutainment</strong></summary></details></h3><div class="indented"><ul id="67ac6b22-500a-470f-919b-3d04d9cdf42e" class="bulleted-list"><li style="list-style-type:disc"><strong>Academic Achievement [100] </strong>You have what it takes to be a straight A student. You’re diligent, studious, difficult to distract, and excellent at time management. You can easily handle the stress of high pressure situations like testing or public speaking. Plus, you’re at least reasonably intelligent, have decent stamina, and aren’t easily bored. You find it simple to ignore physical discomfort, such as public school seating or uniforms, as long as it is not actually harming you.<p id="9290f5fa-ca30-4d70-980c-7fdd41e0d25a" class="">Finally, you find you don’t mind the taste of public school food, and all your homework takes half as long as it should to finish… if, you know, you actually feel like doing homework.</p></li></ul><ul id="c0fcdf63-c045-49f2-88b9-f55e19b72ba8" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: 100 - 100 = 0</strong></li></ul></div><h3 id="a97f3e86-7f16-47a1-be0f-17fc54a28b5c" class=""><details open=""><summary><strong>Mind Control / Netorare</strong></summary></details></h3><div class="indented"><ul id="70d58f72-6a43-4d8e-a6ef-f5a75cbf23dc" class="bulleted-list"><li style="list-style-type:disc"><strong>Matchmaker [100] </strong>You are an expert at seeing the relationship status and potential between people. You can tell when people are together, or when they would be good together, and truly excel at arranging them to hook up. Or, you could arrange to break them apart, if you happen to have a yen for one of them yourself. Manipulating other people’s relationships is your specialty.</li></ul><ul id="d133aae1-be21-492f-8d11-a075312f29af" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: 0 - 100 = -100</strong></li></ul></div><h3 id="a1bdf2f2-d8b0-4f32-9cef-0b941a405a82" class=""><details open=""><summary><strong>Gender Wars / Mecha Musume</strong></summary></details></h3><div class="indented"><ul id="37e19a21-b75e-4dd1-9910-b97ea6a52812" class="bulleted-list"><li style="list-style-type:disc"><strong>Expert Pilot [100] </strong>You are a competent pilot with civilian craft of any sort but you truly excel with military hardware, easily qualifying as an Ace. You have the ability to transform a vehicle’s control systems into a custom design of your choice that enhances your skill even further. The more lewd or even outright pornographic your personalized controls are, the greater this enhancement is.</li></ul><ul id="396e3ffa-0f1b-4f70-9c31-5bab44e736f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -100 - 100 = -200</strong></li></ul></div><h3 id="6491d514-04b9-47d7-824f-7d2989d3cb86" class=""><details open=""><summary><strong>Pot Boilers / Period Romance</strong></summary></details></h3><div class="indented"><ul id="1ec54980-7a86-48b2-9a99-01b8e979e82c" class="bulleted-list"><li style="list-style-type:disc"><strong>Pure as the Driven Snow [100] </strong>You have all the skills a good potential wife should: cooking, house cleaning, sewing, preserving food, preparing for a siege, etc. as well as perfect knowledge of etiquette and proper behavior. Indeed, such necessary work comes naturally to you, always performed to the best of your abilities, with time spent in such endeavors being functionally the same as spending the time in perfectly calm relaxation.<p id="248a602f-5e12-4fb7-b981-84229f5273ae" class="">Alternatively, you can choose to perform such tasks in a tenth the normal time, but you will be forgoing the relaxing effects of taking your time.</p><p id="5c7a0d57-13ea-4832-81e6-5a889692f03f" class="">You are generally seen as the epitome of your social class and your role in it, and people will scoff at the idea that you would do anything inappropriate. Even should they witness such behavior, they will likely assume you had a good reason for it and thus ignore it unless it directly harms them in some way.</p></li></ul><ul id="4c2f5df9-4773-40b1-9e12-a2f8c6a03c16" class="bulleted-list"><li style="list-style-type:disc"><strong>Clever Scoundrel [100] </strong>Whether a cunning bandit, a conspiring lord, or a grasping merchant, he who thinks fastest and knows the most is the one who wins the prize. You are highly skilled at gathering and utilization of intelligence, as well as other areas of espionage and spywork. You are quite cunning, able to think several steps ahead of your competition.<p id="efdb6775-e8f2-4b81-8618-2ac418f9a00b" class="">In addition, the more mysterious and roguish you seem to be, the more attractive you will be to any prospective paramours. Any sexual partner will find their pleasure enhanced as the risk (or perceived risk) of discovery or danger increases.</p></li></ul><ul id="4d67932e-c47b-4590-8c03-047f0a7dbb43" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -200 - 200 = -400</strong></li></ul></div><h3 id="4d60ebc9-12ac-490e-ab79-d7ccaedaf443" class=""><details open=""><summary><strong>Monster Girls</strong></summary></details></h3><div class="indented"><ul id="3823f3ad-a587-4f5c-9512-e85144e92391" class="bulleted-list"><li style="list-style-type:disc"><strong>To Soothe the Savage Breast [100] </strong>With all those Monster Girls and such wandering around, someone is eventually going to think about taming them and harnessing their power. And apparently, that someone is you, but the nature of this world means that taming is going to have a special meaning.<p id="479efc90-4df8-4e5f-8248-ceed8ef6e45c" class="">You can “tame” savage or monstrous creatures by having sex with them. This is considerably faster and more effective than more conventional methods of domestication or conditioning. Even one sexual encounter would make a beast far less willing to harm you. A half a dozen romps in the sack could turn a dangerous beast into a loyal though still domineering friend. A couple of dozen and that friend will follow your commands. More powerful and more willful beasts will require more effort and time for taming. And, of course, the better the sex, the more powerful this taming effect becomes.</p><p id="f979ab2a-c10a-47cb-be08-8581e32019cd" class="">Please note, this works on both creatures of less than human intelligence and those of human intelligence that are heavily influenced by their more primitive instincts. It also makes them more likely to have sex with you before killing you, giving you an opportunity to put this perk to work if you want to.</p></li></ul><ul id="470aa985-dc81-4925-9c0e-28daa65f781a" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -400 - 100 = -500</strong></li></ul></div><h3 id="d4c6d47f-1df4-4442-a62c-cebc99c5da24" class=""><details open=""><summary><strong>Magical Girls</strong></summary></details></h3><div class="indented"><ul id="d11b3e02-2ec3-46dd-ad15-b12c438b00b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Dark Intentions [100] </strong>Bad guys do bad things. And when bad guys capture pretty little magical girls, they usually do bad things to them. And obviously, pretty little magical girls tend to want to avoid that. This perk helps with that, no matter which side you are on.<p id="9bae6432-4e22-42bf-8f3d-7077c2320316" class="">When you are attempting to capture an opponent, especially if you want them at least mostly unharmed, you will find all your abilities are enhanced and your strategies and tactics more effective. Once you have captured someone, it will be almost impossible for them to escape.</p><p id="e4c2c753-194b-429e-a9ca-feff38eb73bc" class="">When someone is attempting to capture you, their abilities will be decreased and they will make stupid strategic and tactical mistakes. If you are captured, you will be guaranteed to escape or be rescued before any significant harm is done to you.</p></li></ul><ul id="f59d2a6d-2679-4d49-a11c-d22caa238c49" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -500 - 100 = -600</strong></li></ul></div><h3 id="76cf2a48-acdf-496d-b3ae-c172914aa955" class=""><details open=""><summary><strong>Erotic Science Fiction</strong></summary></details></h3><div class="indented"><ul id="8909fbf0-43ef-4b7d-b91c-ec9dd038d87a" class="bulleted-list"><li style="list-style-type:disc"><strong>Universal Appeal [100] </strong>Logically, different cultures and species should have different standards of beauty. Even the same culture a decade or two apart could have noticeable differences. But that does not apply to you. Any and all beings will react to your appearance and sex appeal as if their standards were identical to yours. Physical incompatibility is also no longer an issue. Somehow, you will be able to safely engage in sexual activities with any species, no matter how disparate your anatomy. Sexual skills are now universally applicable to all your partners, regardless of species. You can also breed with any partner, with any hybrid children somehow being viable and with the better qualities of both parent species.</li></ul><ul id="45938880-45ea-4416-82f0-01e5efadc6d8" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -600 - 100 = -700</strong></li></ul></div></div><h2 id="91c14f31-12a6-4295-abf6-239c740f0701" class=""><details open=""><summary><strong><strong>ITEMS</strong></strong></summary></details></h2><div class="indented"><ul id="6da15793-515b-4480-8e04-748702a2c8a7" class="bulleted-list"><li style="list-style-type:disc"><em>Items are discounted for the appropriate Origin. Discounted 100cp Items are free instead. Any Item lost or destroyed is restored in 24 hours. Appropriate Items can be Imported at no cost. Properties can be merged. Items can be purchased multiple times.</em></li></ul><ul id="f5245967-c33e-495e-b2e2-c39eb5c34002" class="bulleted-list"><li style="list-style-type:disc"><em>Each Jumper gains +300 cp to be spent on items.</em></li></ul><ul id="b76875db-43eb-43f5-8411-df483203e8df" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -700 + 300 = -400</strong></li></ul><h3 id="d9cd59ab-2640-4b86-baa1-ceaa1f9121c1" class=""><details open=""><summary><strong>General</strong></summary></details></h3><div class="indented"><ul id="33aa8572-c3af-43ef-a4a3-ae7e904a7e52" class="bulleted-list"><li style="list-style-type:disc"><strong>Universal STD Vaccine [Free and Mandatory for All, 100 for more] </strong>Right as you arrive here you’re vaccinated with this incredible cocktail which makes you utterly immune to any disease or condition that could possibly be spread by sexual contact (even the creepy thing from ‘It Follows’). Furthermore, anyone you have sex with will also be cured of any such condition. For 100 CP, you gain a supply of this Vaccine sufficient to inoculate 1,000 people a day.</li></ul><ul id="1ee626c4-58f4-4759-a993-8199679cf8e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Nude Fundamentals [Optional for All Origins &amp; Changes Depending on Level] </strong>You have a parent or parental figure that cares enough about you to provide room and board for you, plus a small amount of spending money each month. You either live with them, or in a property they rent for you, a small house or apartment of some kind, a cheap but decent vehicle of an appropriate type, and the various basic sundries needed to live. Basically, you have a life, set up and waiting for you. You might even have a job, if you’re mature enough, or a place at a school if you’re younger.<p id="eaebe4bf-918c-475f-af0d-a341e8ea8f90" class="">You can choose to have this without the family connections.</p></li></ul><ul id="b356196b-e6cc-4202-ad66-46d4139f1c53" class="bulleted-list"><li style="list-style-type:disc"><strong>Naked Capitalism [50] </strong>You have a trust fund that provides you with the equivalent of up to fifty thousand USD ($50,000.00) per year. This money is legal, with all taxes paid and all documentation needed. No one will question where it comes from. This item follows you to all future Jumps, adapting as needed, and can be toggled off for a Jump. The money can be accessed from any form of bank, in your Warehouse or from inside any personal inventory or any storage item that accesses dimensional pockets or extended spaces.<p id="21d3bf98-cdf6-4539-8652-236dd8f0fe84" class="">Each additional time you purchase this, double your income from any and all sources.</p><p id="b480145d-f11c-4da2-b300-3dbbd08a19b0" class="">Doubling means x2, then x4, then x8 and so on.</p><p id="98c7910a-3e7f-40ff-ad02-e53757e2661d" class="">Any other way isn’t doubling, it’s increasing a multiple.</p></li></ul><ul id="27c5cdb2-871f-4256-8ed1-616e95af4c3b" class="bulleted-list"><li style="list-style-type:disc"><strong>Maraschino Cherries [Free] </strong>You get an unlimited supply of artificially dyed cherries in almond syrup. They come with stems attached and most of them are two cherry pairs.</li></ul><ul id="50bdee20-60b4-4bfd-a5b1-dfeb7b6fc309" class="bulleted-list"><li style="list-style-type:disc"><strong>Like a Virgin [Free to Take, 50 to not take] </strong>The complete recordings of Madonna, in every conceivable recording format, plus one of every piece of Madonna merchandise ever sold. It has its own storage space attached to the Warehouse just for this merchandise and NOTHING ELSE.</li></ul><ul id="1d673e34-7a31-465c-923b-391b8d86d1d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Virgin Mary [50] </strong>You get an unlimited supply of any and all non-alcoholic cocktails from every setting you have visited. This comes with glasses, ice, little umbrellas, and other needed accouterments.</li></ul><ul id="633a030a-a6d8-44ca-9afb-b262a461e78c" class="bulleted-list"><li style="list-style-type:disc"><strong>Virgin Atlantic [50] </strong>You have a plane ticket. It can be used to gain priority seating on any commercial airplane with seating of your choice. So if you want to sit next to a specific passenger, or first class… or anywhere that’s not a restricted area (like the cockpit) you’ll be able to. All services on the flight that are available for anyone else are free for you for the duration. The ticket is reusable but not for more than one flight at a time. Multiple seats on the same plane will take multiple tickets.</li></ul><ul id="daea80c8-76cc-4d36-a59c-7f0e30efd96c" class="bulleted-list"><li style="list-style-type:disc"><strong>Virgin Mobile [50] </strong>You get a disposable cell phone that leaves no record of its existence. Each time you make a call with it, it will self-destruct and you’ll get another one. Each new phone will be utterly clean of any apps or contacts you don’t want on that phone. While being used, It is easily traced, but that’s okay because it won’t exist as soon as you hang up. These phones can call anyone you want to contact, and caller ID always reads “Richard Branson”. Furthermore, you can send one of these phones to anyone you want to contact if they don’t have their own phone. Sent phones take an hour to arrive anywhere. They do not self-destruct unless you want them to, and can always be used to call your current Mobile.</li></ul><ul id="6baf2ec1-582c-4d97-8e17-3817ad7379ac" class="bulleted-list"><li style="list-style-type:disc"><strong>Virgin Queen [50] </strong>You have a portrait of Queen Elizabeth the First of England, by an artist and in a style of your choice. It will be signed by both the artist and the Queen, and will be accepted as legitimate and real by anyone examining it.<p id="26619eb2-666d-4f83-9790-6da46adc46b6" class="">If you happen to need advice on ruling or leadership, Queen Elizabeth will animate like a portrait from a certain book series to help you. She is an expert and will somehow be fully informed on the history, economics and politics of your current setting. She might also do a striptease, if you ask nicely.</p></li></ul><ul id="a82693a0-4892-4509-8069-1259cda70732" class="bulleted-list"><li style="list-style-type:disc"><strong>Virgin Forest [100] </strong>You own one hundred square miles of completely untouched old growth forests. This can be attached to your warehouse or it can be inserted somewhere in the setting. The specific nature of the flora and fauna can either stay the same or adapt to fit each new setting. No one will ever be able to legally take this land from you and there are no taxes owed. No natural disaster will ever damage this property.<p id="417bf31a-c163-43d1-befe-994c8cf486fa" class="">If you choose to have this forest harvested, replanted trees will grow ten times faster than normal, and it will be fully restored when you enter a new Jump.</p></li></ul><ul id="e8babe9d-7b50-4a5b-92f8-459f161ffdf9" class="bulleted-list"><li style="list-style-type:disc"><strong>Virgin Islands [100] </strong>You have a beautiful, luxurious home on a tropical island of your choice, large enough for you and all the guests you want to invite. It is fully paid for, including any taxes. This home provides its own utilities and supplies, its communication systems such as phones or television never go down, and it is self-cleaning and self-maintaining.<p id="8db3260b-c9d3-4008-8301-3d6760e65324" class="">It is exceptionally easy for you to travel to, with arrangements being easy to make and often free, but exceptionally difficult for anyone not invited to find or reach.</p><p id="b259bf34-63db-4cb0-ae3a-984066a29caf" class="">And don’t worry, any others living on the island may or may not be virgins, but they are all willing to try new things.</p><p id="3c3e8bee-e237-418e-8880-60adb1b29b2a" class="">The island isn’t immune to bad weather, but disasters such as Hurricanes, Quakes, and Tsunamis won’t hit your island home unless someone is directing them.</p></li></ul><ul id="55ca1876-ca96-488e-9f3b-cdadf5887281" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -400 - 400 = -800</strong></li></ul></div><h3 id="b7a2fe7e-8029-4eac-8ca3-4b8b84f80269" class=""><details open=""><summary><strong>Incel</strong></summary></details></h3><div class="indented"><ul id="92419ecc-0a1d-488a-b323-da1aecf767ba" class="bulleted-list"><li style="list-style-type:disc"><strong>Microgate [100, </strong><span style="border-bottom:0.05em solid"><strong>Free</strong></span><strong>] </strong>This device allows you to pass anything up to the size of a human arm through it. It will pass through to the other side, which can be anywhere within a thousand meters. Limbs (or other body parts) passed through the gate can easily be aimed and oriented, with the holder of the device being able to sense everything physically present within one meter of the targeted area as if seeing, hearing, smelling, or tasting it if they concentrate on doing so.</li></ul><ul id="3bc98c9d-d412-4f37-8767-6c521d8a328f" class="bulleted-list"><li style="list-style-type:disc"><strong>Compliance Pills [100, </strong><span style="border-bottom:0.05em solid"><strong>Free</strong></span><strong>] </strong>This drug, which is tasteless, odorless, undetectable and dissolves instantly in water, makes anyone who ingests it highly susceptible to any seduction attempt as well as generally increasing their vulnerability to becoming aroused. It does not affect memory.</li></ul></div></div><h2 id="7f3eea9c-9bdf-4602-af1e-b2ec8dba375c" class=""><details open=""><summary><strong><strong>DRAWBACKS</strong></strong></summary></details></h2><div class="indented"><ul id="82cb8cf6-e845-43df-856c-8e7d0d794306" class="bulleted-list"><li style="list-style-type:disc"><em>You can take as many Drawbacks as you want, without limit on cp gained. If you can handle the Drawbacks, you can have the reward. Also, the drawbacks that change the world are altering its condition at the start of the Jump. If you are genuinely capable of changing the nature of the world, fiat will not kick in to change it back. Drawbacks specific to a particular Level, referred to as Complications, only function in that Level. If one Drawback Replaces another, you no longer get points for the Replaced Drawback.</em></li></ul><ul id="a6826880-627e-4b09-a322-fb744b274df9" class="bulleted-list"><li style="list-style-type:disc"><em>Drawbacks Marked with a * provide their CP to both GVJ and G1J when combined.</em></li></ul><h3 id="1573d171-5d4f-4638-829e-c3d3c56c94ae" class=""><details open=""><summary><strong>General</strong></summary></details></h3><div class="indented"><ul id="4a27a2cf-cbec-42ad-bd61-15c3b4040006" class="bulleted-list"><li style="list-style-type:disc">*<strong>Randomizer* [+100] </strong>Your Level choice is out of your hands. Roll a d10. Check the list to see which Level that number corresponds to. That’s your first Level. Survived it? Good. Keep rolling and completing Levels until all ten are completed. You re-roll if you roll a Level you have already faced.<ul id="8f41d914-3ee2-4687-80a3-eac9e02ccc4d" class="bulleted-list"><li style="list-style-type:circle"><strong>Roll: 4, 9, 7, 3, 6, 8, 5, 2, 1, 10</strong></li></ul></li></ul><ul id="933f7b47-c4f7-43b6-b7ca-448752eb0bd2" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -800 + 100 = -700</strong></li></ul></div><h3 id="fd7d8d03-16dc-43ed-a54c-7a110aeb2433" class=""><details open=""><summary><strong>Mind Control / Netorare</strong></summary></details></h3><div class="indented"><ul id="295f5f45-b148-4fd3-a6c9-1533a728a7b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Disobedient Servants [+100] </strong>Any victims of your mind control will be fairly strong-willed and quite clever about obeying the letter of your commands rather than the spirit. If you are the one being controlled, you will be forced to obey the spirit as well as the letter. You will not be able to resist cleverly, pure willpower will be your only option.</li></ul><ul id="c797572c-c4c3-4e44-82f2-d315b8d9cde1" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -700 + 100 = -600</strong></li></ul></div><h3 id="5a097fa9-1f34-4039-aa58-2a963226ea84" class=""><details open=""><summary><strong>Erotic Fantasy</strong></summary></details></h3><div class="indented"><ul id="ca8ab432-56d3-4819-aef2-4ae09552bba3" class="bulleted-list"><li style="list-style-type:disc"><strong>Magical Realm [+100] </strong>Did someone say tentacles? Futanari elves? Extremely stretchy goblin wenches? Unbirthing lamia? Piss drinking Trolls? Welcome to a very magical realm. Everything here is at least one person’s fetish, and the fetishes will routinely clash.</li></ul><ul id="7f6c2db3-b417-499d-b383-a0a8382d2ce8" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -600 + 100 = -500</strong></li></ul></div><h3 id="df1b5d3b-2c80-4e3e-ab1e-70b4f169ae8e" class=""><details open=""><summary><strong>Gender Wars / Mecha Musume</strong></summary></details></h3><div class="indented"><ul id="03ccbbd8-48e5-4194-b1e2-10e1bf24d414" class="bulleted-list"><li style="list-style-type:disc"><strong>Emotional Distance [+100] </strong>Your commander / troops are quite kuudere, depending on which you are. Their cold demeanor will hurt your feelings.</li></ul><ul id="9c028a2d-239c-4040-983a-8f649b8680a9" class="bulleted-list"><li style="list-style-type:disc"><strong>The Real Enemy is Us [+100] </strong>Your side is, either openly or secretly, the bad guys. Expect to find a lot of emotional turmoil as you have to choose between remaining loyal to your own (evil) side or doing what is right but betraying your allies.</li></ul><ul id="b712a11c-4e5f-4572-9953-a1c1d573019a" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -500 + 200 = -300</strong></li></ul></div><h3 id="5decb0ec-5955-4440-b0ab-cd522fbbe807" class=""><details open=""><summary><strong>Pot Boilers / Period Romance</strong></summary></details></h3><div class="indented"><ul id="9aa5e00a-4d1b-41ff-b059-8508e204e4f8" class="bulleted-list"><li style="list-style-type:disc"><strong>Obviously Evil [+100] </strong>Something about you is clearly off. Maybe it’s the handlebar moustache. Maybe it’s the constant smirk. Maybe it’s the fact that you always introduce yourself as Madame d’Murder. Regardless, you’re quite clearly evil and all but the most oblivious types will notice it within a few minutes in your presence. Your only saving grace may be that period heroines are often less than brilliant.</li></ul><ul id="c79e9c38-c055-4f69-a245-52760a979c62" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -300 + 100 = -200</strong></li></ul></div><h3 id="5468d15e-8770-4d67-9c68-607625762e20" class=""><details open=""><summary><strong>Monster Girls</strong></summary></details></h3><div class="indented"><ul id="52768783-8df5-4967-9878-9bb0d395a08c" class="bulleted-list"><li style="list-style-type:disc"><strong>Untamed Hearts [+100] </strong>The Monster girls are exceptionally feral and aggressive. Don’t expect to domesticate any of them. If you are a Monster girl, your instincts and drives will be much stronger.</li></ul><ul id="0776217b-7141-476c-bada-fedba513a9bb" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -200 + 100 = -100</strong></li></ul></div><h3 id="58532cc6-b2aa-4435-857f-291d05610d18" class=""><details open=""><summary><strong>Erotic Science Fiction</strong></summary></details></h3><div class="indented"><ul id="22b947d7-9aea-4fa3-ae29-c0b62ccd5d03" class="bulleted-list"><li style="list-style-type:disc"><strong>Sexnobabble [+100] </strong>Everything technical is also somehow sexual. Why is the warp drive powered by plugging crew members into Orgasmotrons? Because Science! Sexy Science! The best kind of Science!</li></ul><ul id="e6a84a19-e6e7-41a2-8128-0ed6542103ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Current CP: -100 + 100 = 0</strong></li></ul></div></div><h2 id="8e9e3b8b-c406-4481-bc41-bb0b2f1d7267" class=""><details open=""><summary><strong><strong>FINAL CHOICES</strong></strong></summary></details></h2><div class="indented"><ul id="7745e50f-47ad-42e4-903e-711a317cde5a" class="bulleted-list"><li style="list-style-type:disc">Well, you survived. Wait, was that really in doubt? This isn’t really a high risk Jump. Whatever</li></ul><ul id="c14a0c47-56c0-4301-8f5b-35f8550ad2e6" class="bulleted-list"><li style="list-style-type:disc">Now you get to make one final choice, but either way, you receive one last reward.</li></ul><ul id="54cf5e38-dee6-4717-a758-cf7516434bd4" class="bulleted-list"><li style="list-style-type:disc"><strong>Body Mod Reward [Free for All] </strong>All perks and items from this Jump (with the exception of Basic Requirements) are now considered part of your Body Mod. You will still have them, even in Gauntlets or if you take a Power Loss Drawback.</li></ul><ul id="7dd5c031-7a27-4549-b157-cf136d8d4770" class="bulleted-list"><li style="list-style-type:disc">Do you want to <strong>MOVE ON</strong>?<ul id="687605c5-9e50-4353-ad6f-2934e9ddca66" class="bulleted-list"><li style="list-style-type:circle">Then you get to go to another Jump. All drawbacks end, and you get to take everything you have acquired with you.</li></ul></li></ul></div><h2 id="f098d4c9-a9d4-4ade-ba54-77b94610c1c9" class=""><strong>Ending CP: 0</strong></h2></div></article></body></html>
